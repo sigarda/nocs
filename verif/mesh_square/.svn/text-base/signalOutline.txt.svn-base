@@ -1,0 +1,15 @@
+for rtr
+    for port
+       [clogb num_vcs] RTR.genblk1.vcr.alo.genblk2.sw_core_sep_if.ops[PORT].genblk1.gnt_out_nonspec_ip_arb.genblk1.genblk1.rr_arb.genblk2.state_q,
+       [clogb num_vcs] RTR.genblk1.vcr.alo.genblk2.sw_core_sep_if.ops[PORT].genblk2.genblk1.gnt_out_spec_ip_arb.genblk1.genblk1.rr_arb.genblk2.state_q,
+       [clogb num_vcs] RTR.genblk1.vcr.alo.genblk2.sw_core_sep_if.ips[PORT].genblk1.gnt_in_nonspec_ivc_arb.genblk1.genblk1.rr_arb.genblk2.state_q,
+       [clogb num_vcs] RTR.genblk1.vcr.alo.genblk2.sw_core_sep_if.ips[PORT].genblk2.genblk1.gnt_in_spec_ivc_arb.genblk1.genblk1.rr_arb.genblk2.state_q); // see vcr_sw_alloc_sep_if.v line 291
+       [num_vcs] RTR.genblk1.vcr.ips[PORT].ipc.fb.genblk2.full_ivc,
+       [1] RTR.genblk1.vcr.ips[PORT].ipc.chi.genblk1.link_active_q,
+       [num_ports] RTR.genblk1.vcr.alo.ops[PORT].xbr_ctrl_ip_q,
+        for vc
+        [clogb num_vcs_per_class]    RTR.genblk1.vcr.alo.genblk1.vc_core_sep_if.mcs[0].ips[PORT].ircs[0].icvcs[VC].orcs[0].gnt_ocvc_arb.genblk1.genblk1.rr_arb.genblk2.state_q,
+        [clogb num_ports]            RTR.genblk1.vcr.alo.genblk1.vc_core_sep_if.mcs[0].ops[PORT].orcs[0].ocvcs[VC].gnt_out_ip_arb.genblk1.genblk1.rr_arb.genblk2.state_q,
+        [1]    RTR.genblk1.vcr.ips[PORT].ipc.ivcs[VC].ivcc.vc_allocated_q,
+            for port2
+                [clogb num_resource_classes (1)*num_vcs_per_class] RTR.genblk1.vcr.alo.genblk1.vc_core_sep_if.mcs[0].ops[PORT].orcs[0].ocvcs[VC].ips[PORT2].gnt_our_irc_icvc_arb.genblk1.genblk1.rr_arb.genblk2.state_q

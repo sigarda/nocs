@@ -1,0 +1,20 @@
+Format of traces:
+<time> <src> <dest> <vnet>
+
+vnet {0,1,2}
+vnet 0, 1 = control [1 flit]
+vnet 2 = data       [5 flits]
+
+Each core runs about 1M instructions
+
+Configuration of system:
+64 threaded PARSEC benchmarks
+64 core CMP
+8x8 Mesh NoC
+Private L1's per core
+Shared distributed L2
+4 Memory controllers at the corners
+
+L1 size = 32K
+L2 size = 64M (1M per core)
+

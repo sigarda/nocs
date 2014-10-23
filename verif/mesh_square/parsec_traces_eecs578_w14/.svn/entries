@@ -1,0 +1,123 @@
+10
+
+dir
+8
+file:///afs/umich.edu/user/k/e/kelseyer/578/FinalProj/verif/mesh_3x3/parsec_traces_eecs578_w14
+file:///afs/umich.edu/user/k/e/kelseyer/578/FinalProj
+
+
+
+2014-04-04T15:43:10.252495Z
+8
+kelseyer
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+6cdcd8ae-24bb-4d5c-a753-99a189310043
+
+trace_network_8x8_parsec_freqmine_instr_1M_c0
+dir
+
+trace_network_8x8_parsec_swaptions_instr_1M_c0
+dir
+
+trace_network_8x8_parsec_ferret_instr_1M_c0
+dir
+
+trace_network_8x8_parsec_streamcluster_instr_1M_c0
+dir
+
+trace_network_8x8_parsec_blackscholes_instr_1M_c0
+dir
+
+trace_network_8x8_parsec_dedup_instr_1M_c0
+dir
+
+parsec_parser.cpp
+file
+
+
+
+
+2014-03-23T18:13:06.000000Z
+d8007c212db83030d42049167a7d017f
+2014-04-04T15:43:10.252495Z
+8
+kelseyer
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2316
+
+trace_network_8x8_parsec_vips_instr_1M_c0
+dir
+
+trace_network_8x8_parsec_bodytrack_instr_1M_c0
+dir
+
+trace_network_8x8_parsec_x264_instr_1M_c0
+dir
+
+README
+file
+
+
+
+
+2014-03-23T18:10:07.000000Z
+65c9afb58fcfa0393c9ab904575e3ed7
+2014-04-04T15:43:10.252495Z
+8
+kelseyer
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+361
+
