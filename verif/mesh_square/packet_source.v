@@ -259,7 +259,8 @@ module packet_source
    
    integer 			 i;
    
-   reg 				 new_packet;   
+   //reg 				 new_packet;   
+   wire new_packet;
    
    //Ker 578 file information
    //need to keep clock count
@@ -306,15 +307,16 @@ module packet_source
             if ($realtime > real_time) 
                 $display("Error - absolute time in file is out of order - %t", 
                         real_time); 
-                else 
+                else begin
                     #(real_time - $realtime) 
                         r = $fscanf(file," %d %d %d\n",src,dest,vnet); 
-                        
+                        $display( "source packet %02d,%08d %08d %01d %01d %02d",router_num,$realtime, real_time, src, dest, vnet);
+                     end   
                 end // if c else 
-            c = $fgetc(file); 
+            c =$fgetc(file); 
         end // while not EOF 
   
-    //r = $fclose(file); 
+    $fclose(file); 
    end//initial
    
   // always@(negedge run){
@@ -401,14 +403,17 @@ module packet_source
    
    
    wire next_newpacket;
-   assign next_newpacket = thisTime_q!=lastTime_q;
+   assign next_newpacket = thisTime_q!=lastTime_q&&thisTime_q!=0&&lastTime_q!=0;
    
-   always @(posedge clk, posedge reset)
+   /*always @(posedge clk, posedge reset)
      begin
-     //$display( "source packet %08d %08d %01d %01d %02d",$realtime, real_time, src, dest, vnet);
 	new_packet
 	  <=  (next_newpacket) && run && !reset;
-     end
+     end*/
+     
+     assign new_packet = next_newpacket;
+     
+     
    
    wire waiting_packet_count_zero;
    

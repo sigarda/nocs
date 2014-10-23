@@ -37,10 +37,10 @@ module testbench
 `include "parameters.v"
    
       // warmup time in cycles
-   parameter warmup_time = 100;
+   parameter warmup_time = 30;
    
    // measurement interval in cycles
-   parameter measure_time = 1500000;//5765074;//5765074;//1000*num_routers_per_dim;
+   parameter measure_time = 4;//5765074;//5765074;//1000*num_routers_per_dim;
    
    parameter log_start = warmup_time;
    
@@ -614,7 +614,7 @@ module testbench
 valid=1, head=1, tail=x, vcs=0100, data=0847a4c95f0140b9
 external error detected, cyc=                  32
 
-     
+     */
         router_checker
      #(.buffer_size(buffer_size),
        .num_message_classes(num_message_classes),
@@ -639,7 +639,7 @@ external error detected, cyc=                  32
       .router_address(router_address),
       .channel_in_ip(channel_ips[ip*num_ports*channel_width:(ip+1)*num_ports*channel_width-1]),
       .channel_out_op(channel_ops[ip*num_ports*channel_width:(ip+1)*num_ports*channel_width-1]),
-      .error(rchk_error[ip]));*/
+      .error(rchk_error[ip]));
        
        //end 578 changes
 
@@ -959,7 +959,7 @@ external error detected, cyc=                  32
      
      always @(posedge clk)
      begin
-     $write("STATE");
+    // $write("STATE");
         for(router = 0; router<num_routers; router = router+1)
         begin:printrtr
              /*if(!reset) begin
@@ -990,6 +990,7 @@ external error detected, cyc=                  32
             begin:printswis
                $write(",%d",sw_in_gnt_spec [(router*num_ports*vc_idx_width)+signaloff+:vc_idx_width] );
             end//printswis*/
+            $write("%2d",router);
             for(signaloff = 0; signaloff<num_ports*num_vcs; signaloff = signaloff+num_vcs)
             begin:printfbe
                 //$fwrite(outfiles[router],",%d",fb_empty [(router*num_ports*vc_idx_width)+signaloff+:num_vcs] );
@@ -1004,7 +1005,9 @@ external error detected, cyc=                  32
             begin:printxbc
                 //$fwrite(outfiles[router],",%d",xbr_ctrl [(router*num_ports)+signaloff+:num_ports] );
                 $write(",%d",xbr_ctrl [(router*num_ports)+signaloff+:num_ports] );                
-            end//printxbc
+            end
+            $write("\t");
+            //printxbc
             /*for(portoff = 0; portoff<num_ports; portoff = portoff+1)
             begin:printvcoop
                 for(signaloff = 0; signaloff<num_vcs*vc_idx_width; signaloff = signaloff+vc_idx_width)
@@ -1051,9 +1054,9 @@ external error detected, cyc=                  32
    begin
       
       reset = 1'b0;
-      clk_en = 1'b0;
-      run = 1'b0;
-      count_en = 1'b0;
+      clk_en = 1'b1;
+      run = 1'b1;
+      count_en = 1'b1;
       cycles = 0;
       
       #(Tclk);
@@ -1066,7 +1069,7 @@ external error detected, cyc=                  32
       
       reset = 1'b0;
       
-      #(Tclk);
+      /*#(Tclk);
       
       clk_en = 1'b1;
       
@@ -1074,7 +1077,7 @@ external error detected, cyc=                  32
       
       $display("warming up...");
       
-      run = 1'b1;
+      run = 1'b1;*/
 
       while(cycles < warmup_time)
 	begin
